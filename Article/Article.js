@@ -112,3 +112,45 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articles = document.querySelector('.articles');
+data.forEach(item => {
+  articles.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+});
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  const divTitle = document.createElement('div');
+  const cardTitle = document.createElement('h2');
+  const dateHere = document.createElement('p');
+  const Pee1 = document.createElement('p');
+  const Pee2 = document.createElement('p');
+  const Pee3 = document.createElement('p');
+  const butt = document.createElement('span');
+
+  divTitle.appendChild(cardTitle);
+  divTitle.appendChild(dateHere);
+  divTitle.appendChild(Pee1);
+  divTitle.appendChild(Pee2);
+  divTitle.appendChild(Pee3);
+  divTitle.appendChild(butt);
+
+  divTitle.classList.add('article');
+  dateHere.classList.add('date');
+  butt.classList.add('expandButton');
+
+  cardTitle.textContent = title;
+  dateHere.textContent = date;
+  Pee1.textContent = firstParagraph;
+  Pee2.textContent = secondParagraph;
+  Pee3.textContent = thirdParagraph;
+  butt.textContent = '\u25bc';
+
+
+
+  butt.addEventListener('click', (e) => {
+    divTitle.classList.toggle('article-open');
+    divTitle.classList.toggle('close');
+  });
+
+return divTitle;
+};
